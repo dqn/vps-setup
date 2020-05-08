@@ -1,11 +1,14 @@
 # vps-setup
 
+My script for setting up VPS
+
 ## Usage
 
 ```bash
 $ cp .env.sample .env
 $ vi .env
-$ ./setup.sh
+# edit config
+$ ./build.sh
 ```
 
 ## Features
