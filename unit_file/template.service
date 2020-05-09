@@ -1,0 +1,12 @@
+[Unit]
+Description=unit file template
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/echo Hello!
+KillMode=process
+Restart=always
+WorkingDirectory=/home/dqn
+
+[Install]
+WantedBy=multi-user.target
