@@ -1,6 +1,6 @@
 # vps-setup
 
-My script for setting up VPS
+My script for setup VPS
 
 - OS: CentOS 8
 
