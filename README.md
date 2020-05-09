@@ -2,13 +2,15 @@
 
 My script for setting up VPS
 
+- OS: CentOS 8
+
 ## Usage
 
 ```bash
 $ cp .env.sample .env
 $ vi .env
 # edit config
-$ ./build.sh
+$ ./prepare.sh
 ```
 
 ## Features
@@ -17,4 +19,6 @@ $ ./build.sh
 - Add public RSA key
 - Disable root login
 - Change SSH port
+- Modify Firewall setting(SSH, HTTP, HTTPS)
+- Modify SELinux
 - Disable password authentication
