@@ -1,13 +1,9 @@
 #!/bin/bash
 
-eval "$(cat .env <(echo) <(declare -x))"
+# Example for Go
 
-scp -P ${PORT} example.conf example.service ${USER_NAME}@${HOST}:/home/${USER_NAME}/
-ssh -t ${USER_NAME}@${HOST} -p ${PORT} << EOS
-sudo mv /home/${USER_NAME}/example.conf /etc/nginx/conf.d/
-sudo mv /home/${USER_NAME}/example.service /etc/systemd/system/
-sudo systemctl enable example.service
-sudo nginx -s stop
-/usr/local/certbot/certbot-auto certonly --standalone -d ${HOST} -m ${MAIL} --agree-tos -n
-sudo systemctl start nginx
-EOS
+eval "$(cat ./deploy/.env <(echo) <(declare -x))"
+
+GOOS=linux GOARCH=amd64 go build -ldflags "-s -w"
+scp -P ${PORT} example ${USER_NAME}@${HOST}:/home/${USER_NAME}/
+ssh -t ${USER_NAME}@${HOST} -p ${PORT} "sudo systemctl restart example.service"
