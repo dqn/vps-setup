@@ -5,8 +5,6 @@ eval "$(cat .env <(echo) <(declare -x))"
 KEY=`cat ~/.ssh/id_rsa.pub`
 
 ssh -t root@${HOST} << EOS
-#!/bin/bash
-
 dnf -y update
 
 # sshd

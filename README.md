@@ -19,6 +19,7 @@ $ ./prepare.sh
 - Add public RSA key
 - Disable root login
 - Change SSH port
-- Modify Firewall setting(SSH, HTTP, HTTPS)
+- Modify Firewall setting (SSH, HTTP, HTTPS)
 - Modify SELinux
 - Disable password authentication
+- Certbot
