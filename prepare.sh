@@ -35,14 +35,9 @@ systemctl enable nginx
 systemctl restart nginx
 
 # certbot
-# dnf -y install wget
-# wget https://dl.eff.org/certbot-auto
-# mv certbot-auto /usr/local/bin/certbot-auto
-# chown root /usr/local/bin/certbot-auto
-# chmod 0755 /usr/local/bin/certbot-auto
-# /usr/local/bin/certbot-auto certonly --nginx
-# echo "0 0,12 * * * root python3 -c 'import random; import time; time.sleep(random.random() * 3600)' && /usr/local/bin/certbot-auto renew -q" | sudo tee -a /etc/crontab > /dev/null
-# systemctl reload nginx
+cd /usr/local
+git clone https://github.com/certbot/certbot
+(crontab -l; echo "0 4 1 * * /usr/local/certbot/certbot-auto renew && sudo /usr/bin/systemctl reload nginx > /dev/null 2>&1") | crontab -
 
 # create user
 useradd ${USER_NAME}
